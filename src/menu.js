@@ -1,22 +1,26 @@
+"use strict";
+
+import loadScript from "./load.js";
 export default class Menu {
-    constructor(btnId1, elementId1, btnId2, elementId2){
-        this._btn1 = document.getElementById(btnId1);
-        this._element1 = document.getElementById(elementId1);        
-        this._btn1.addEventListener("click", this._btnHandler1.bind(this));
-
-
-        this._btn2 = document.getElementById(btnId2);
-        this._element2 = document.getElementById(elementId2);
-        this._btn2.addEventListener("click", this._btnHandler2.bind(this));
+    constructor(configArray){
+        this._items = [];
+        for (let i = 0; i < configArray.length; i++){
+            const confItem = configArray[i];
+            const menuItem = {};
+            menuItem.btnEl = document.getElementById(confItem.btnId);
+            menuItem.blockEl = document.getElementById(confItem.elementId);
+            menuItem.scripts = confItem.scripts;
+            let menuItemIndex = i;
+            menuItem.btnEl.addEventListener("click", () => loadScript(confItem.scripts, this._btnHandler.bind(this,menuItemIndex)) );
+            this._items.push(menuItem);
+        }
     }
 
-    _btnHandler1() {
-        this._element2.style.display = "none";
-        this._element1.style.display = "block";
+    _btnHandler(itemIndex) {
+        const menuItem = this._items[itemIndex];
+        for (let item of this._items){
+            item.blockEl.style.display = "none";
+        }
+        menuItem.blockEl.style.display = "block";
     }
-
-    _btnHandler2() {
-        this._element1.style.display = "none";
-        this._element2.style.display = "block";
-    }    
 }
