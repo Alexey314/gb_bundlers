@@ -3,6 +3,10 @@
 import { diffDates, diffToHtml } from "./datecalc.js"; // 1
 import { formatError } from "./utils.js"; // 2
 import Timer from "./timer.js";
+import Menu from "./menu.js";
+
+const menu = new Menu("menu__datecalc-btn", "datecalc",
+                    "menu__timer-btn", "timer");
 
 const dateCalcForm = document.getElementById("datecalc");
 const dateCalcResult = document.getElementById("datecalc__result");
