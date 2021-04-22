@@ -1,3 +1,5 @@
+"use strict";
+
 import { DateTime } from "./luxon.js"; // 1
 
 export function diffDates(firstDate, secondDate) {

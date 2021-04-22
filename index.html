@@ -22,6 +22,14 @@
         <button type="submit">Расчитать промежуток</button>
         <p id="datecalc__result"></p>
     </form>
+    <form id="timer" style="visibility: visible;">
+        <h3>Таймер</h3>
+        <label>
+            <strong>Секунды (0-60):</strong>
+            <input type="number" id="timer__input" name="seconds" step="1" value="5" min="0" max="60" required/>
+        </label>
+        <button type="submit" id="timer__btn">Старт</button>
+    </form>
 </body>
 
 </html>
