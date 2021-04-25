@@ -8,17 +8,14 @@ import Menu from "./menu.js";
 
 const menu = new Menu([
     {
+        name: "datecalc",
         btnId: "menu__datecalc-btn", 
         elementId: "datecalc",
     },
     {
+        name: "timer",
         btnId: "menu__timer-btn", 
         elementId: "timer",
-        scripts: [
-            "./src/howler.js", 
-            "./src/timer.js", 
-            "./src/timer-ui.js"
-        ]
     }
 ]);
 

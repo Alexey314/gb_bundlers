@@ -3,7 +3,7 @@
 const TIMER_STOPPED = 0;
 const TIMER_RUNNING = 1;
 
-class Timer {
+export class Timer {
     constructor(onTimerUpdateHandler) {
         this._state = TIMER_STOPPED;
         this._time = 0;
