@@ -1,18 +1,31 @@
 "use strict";
 
-import loadScript from "./load.js";
+// import loadScript from "./load.js";
 export default class Menu {
     constructor(configArray){
         this._items = [];
         for (let i = 0; i < configArray.length; i++){
             const confItem = configArray[i];
             const menuItem = {};
+            menuItem.name = confItem.name;
             menuItem.btnEl = document.getElementById(confItem.btnId);
             menuItem.blockEl = document.getElementById(confItem.elementId);
-            menuItem.scripts = confItem.scripts;
             let menuItemIndex = i;
-            menuItem.btnEl.addEventListener("click", () => loadScript(confItem.scripts, this._btnHandler.bind(this,menuItemIndex)) );
+            menuItem.btnEl.addEventListener("click", this._componentLoad.bind(this,menuItemIndex) );
             this._items.push(menuItem);
+        }
+    }
+
+    _componentLoad(itemIndex){
+        switch (this._items[itemIndex].name){
+            case "datecalc":
+                this._btnHandler(itemIndex);
+                break;
+            case "timer":
+                import("./timer-ui.js").then((module) => {
+                    this._btnHandler(itemIndex);
+                });
+                break;
         }
     }
 

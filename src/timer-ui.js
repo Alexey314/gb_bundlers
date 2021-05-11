@@ -1,13 +1,16 @@
 "use strict";
 
+import { Timer } from './timer.js';
+import { Howl } from 'howler';
 const timerForm = document.getElementById("timer");
 const timerInput = document.getElementById("timer__input");
 const timerBtn = document.getElementById("timer__btn");
 const timer = new Timer(timerUpdateHandler);
-// import './howler.js';
+
+import beepUrl from '../assets/beep-09.mp3';
 
 const timerSound = new Howl({
-    src: ['./assets/beep-09.mp3']
+    src: [beepUrl]
   });
 
 timerForm.addEventListener("submit", timerFormEventHandler);
